@@ -26,11 +26,10 @@ RUN apk --update add \
         nginx \
         curl \
         supervisor \
-
     && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
-RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN ln -fs /usr/bin/php7 /usr/bin/php
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
