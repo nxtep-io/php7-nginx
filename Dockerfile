@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-MAINTAINER Jonathan Lamim Antunes <dev@jlamim.com.br>
+MAINTAINER Luis Brito <luis@nxtep.io>
 
 # Install packages
 RUN apk --update add \
