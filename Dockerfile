@@ -28,6 +28,9 @@ RUN apk --update add \
         supervisor \
     && rm -rf /var/cache/apk/*
 
+RUN set -x \
+    && adduser -u 82 -D -S -G www-data www-data
+
 # Creating symbolic link to php
 RUN ln -fs /usr/bin/php7 /usr/bin/php
 
@@ -41,6 +44,7 @@ COPY config/nginx/default /etc/nginx/sites-enabled/default
 # Configure PHP-FPM
 COPY config/php/php.ini /etc/php7/conf.d/zzz_custom.ini
 COPY config/php/www.conf /etc/php/7.0/fpm/pool.d/www.conf
+COPY config/php/www.conf /etc/php7/php-fpm.d/www.conf
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
